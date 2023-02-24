@@ -8,7 +8,6 @@ import math
 import numpy as np
 import pandas as pd
 import torch
-from apex import amp
 from tqdm.auto import tqdm
 from datasets import Dataset, load_dataset, load_metric
 from torch.utils.data import DataLoader
@@ -96,6 +95,7 @@ class Trainer(object):
 
         # 混合精度训练
         if self.config.fp16:
+            from apex import amp
             self.model, self.optimizer = amp.initialize(self.model, self.optimizer, opt_level=self.config.fp16_opt_level)
 
         # 分布式训练

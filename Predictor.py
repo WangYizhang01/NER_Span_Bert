@@ -8,7 +8,6 @@ import math
 import numpy as np
 import pandas as pd
 import torch
-from apex import amp
 from tqdm.auto import tqdm
 from datasets import Dataset, load_dataset, load_metric
 from torch.utils.data import DataLoader
@@ -50,6 +49,7 @@ class Predictor(object):
 
         # 混合精度
         if self.config.fp16:
+            from apex import amp
             model = amp.initialize(model, opt_level='O3')
 
         # 初始化指标计算

@@ -40,7 +40,7 @@ class DataManager(object):
         数据转换
         """
         # 获取数据
-        src, tgt = open_file(self.config.path_datasets + file_name, sep=' ')
+        src, tgt = open_file(self.config.path_datasets + file_name, sep='	')
         src = [str(x) for x in src]
         # tgt = [str(x) for x in tgt]
         # 获取标签
